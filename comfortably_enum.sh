@@ -108,13 +108,13 @@ then
   # run second port scan output ports.txt
   echo -e "\nScanning live host ports with version: outputing to ports.txt\n"
   LIVE_IP="10.1.20.1"
-  NMAP=$(echo "$LIVE_IP" | xargs nmap -sSV -p- | tee /dev/tty)
+  NMAP=$(echo "$LIVE_IP" | xargs -n 1 nmap -sSV -p- | tee /dev/tty)
   echo "$NMAP" > ports.txt
   echo -e "\n"
 
   # run third version scan output enumerated.txt
   echo -e "\nRunning OS version enumeration: outputing to enumerated.txt\n"
-  NMAP=$(echo "$LIVE_IP" | xargs nmap -sO | tee /dev/tty)
+  NMAP=$(echo "$LIVE_IP" | xargs -n 1 nmap -sO | tee /dev/tty)
   echo "$NMAP" > enumerated.txt
   echo -e "\n"
 
