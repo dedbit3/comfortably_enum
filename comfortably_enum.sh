@@ -114,7 +114,7 @@ then
 
   # run third version scan output enumerated.txt
   echo -e "\nRunning OS version enumeration: outputing to enumerated.txt\n"
-  NMAP=$(nmap -sO $TARGET_IP | tee /dev/tty)
+  NMAP=$(echo "$LIVE_IP" | xargs nmap -sO | tee /dev/tty)
   echo "$NMAP" > enumerated.txt
   echo -e "\n"
 
